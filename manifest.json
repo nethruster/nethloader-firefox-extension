@@ -1,0 +1,21 @@
+{
+  "name": "Send to Nethloader",
+  "version": "0.1.0",
+  "description": "Upload any image from your browser to Nethloader.",
+  "options_page": "options/options.html",
+  "background": {
+    "scripts": ["init.js"],
+    "persistent": false
+  },
+  "icons": {
+    "16": "/img/icons/favicon-16x16.png",
+    "32": "/img/icons/favicon-32x32.png",
+    "48": "/img/icons/favicon-48x48.png",
+    "128": "/img/icons/favicon-128x128.png"
+  },
+  "permissions": [
+    "*://*/*",
+    "storage"
+  ],
+  "manifest_version": 2
+}

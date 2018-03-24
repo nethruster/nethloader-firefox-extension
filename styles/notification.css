@@ -1,0 +1,43 @@
+.notification-wrapper {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    
+    padding: var(--base-pm);
+    margin: calc(var(--base-pm) * 2);
+}
+
+.notification {
+    height: var(--notification-height);
+    width: var(--notification-width);
+
+    padding: var(--base-pm);
+
+    background-color: var(--contrast-color);
+    border-radius: var(--base-br);
+    color: var(--valid-color);
+}
+
+.notification-separator {
+    width: 1px;
+    height: 24px;
+
+    margin: 0 calc(var(--base-pm) * 3);
+
+    background-color: rgba(0,0,0,.4);
+}
+
+.notification-icon {
+    width: 18px;
+    vertical-align: middle;
+    margin-bottom: 1px;
+}
+
+button.button-notification {
+    padding: 0;
+
+    background: transparent;
+    border: none;
+    color: var(--default-color);
+    font-size: .9em;
+}
