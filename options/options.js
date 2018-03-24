@@ -1,45 +1,58 @@
-import {$, getTestImage} from '/js/utils.js'
+'strict mode'
+
+import { $, getTestImage } from '/js/utils.js'
 import sendImage from '/js/send-image.js'
 
-const form = $('form')
-const urlInput = $('#url')
-const apiKeyInput = $('#api-key')
-const typeInput = $('#type') 
-const testBtn = $('#test')
-const saveBtn = $('#save')
+class Options {
+  constructor(form, urlInput, apikeyInput, testBtn, saveBtn) {
+    this.form = form
+    this.urlInput = urlInput
+    this.apiKeyInput = apikeyInput
+    this.testBtn = testBtn
+    this.saveBtn = saveBtn
 
-testBtn.addEventListener('click', event => typeInput.value = "test")
-saveBtn.addEventListener('click', event => typeInput.value = "save")
-
-chrome.storage.sync.get('options', data => {
-  let {options} = data
-  urlInput.value = options.nethPublicEndpoint.replace("/api", "")
-  apiKeyInput.value = options.nethApikey
-})
-
-form.addEventListener('submit', event => {
-  event.preventDefault()
-  if(type.value === "save") {
-    handleSave()
-  } else {
-    handleTest()
+    this.handleEventListners()
+    this.getStoredConfig()
   }
-})
 
-function handleSave() {
-  chrome.storage.sync.set({
-    options: {
-      "nethPublicEndpoint": new URL('/api', urlInput.value),
-      "nethApikey": apiKeyInput.value
-    }
-  }, () => {})
+  getStoredConfig () {
+    chrome.storage.sync.get('options', data => {
+      let { options } = data
+
+      // Set input values
+      this.urlInput.value = options.nethPublicEndpoint
+      this.apiKeyInput.value = options.nethApikey
+    })
+  }
+
+  saveStoredConfig() {
+    console.log(this)
+    chrome.storage.sync.set({
+      options: {
+        "nethPublicEndpoint": this.urlInput.value,
+        "nethApikey": this.apiKeyInput.value
+      }
+    }, () => { })
+  }
+
+  handleEventListners () {
+    this.testBtn.addEventListener('click', this.handleTest.bind(this))
+    this.saveBtn.addEventListener('click', this.saveStoredConfig.bind(this))
+
+    this.form.addEventListener('submit', (event) => {
+      event.preventDefault()
+    })
+  }
+
+  async handleTest () {
+    let testImage = await getTestImage()
+    let url = new URL('/api', this.urlInput.value)
+
+    sendImage(url, this.apiKeyInput.value, testImage)
+      .catch(err => {
+        console.error(err)
+      })
+  }
 }
 
-async function handleTest() {
-  let testImage = await getTestImage()
-
-  let url = new URL('/api', urlInput.value)
-
-  sendImage(url, apiKeyInput.value, testImage)
-    .then(result => {})
-}
+new Options($('form'), $('#url'), $('#apikey'), $('#test'), $('#save'))

@@ -30,14 +30,13 @@
                 <p class='form-title'>Extension Settings</p>
                 <form class='flex flex-dc flex-cross-center flex-sa options-form'>
                     <div class='flex flex-dc flex-cross-center form-row'>
-                        <input type="url" placeholder="API Endpoint" required name="url" id="url">
-                        <input type="text" placeholder="APIKey" pattern="[A-Za-z0-9_~]{24}" required name="api-key" id="api-key">
+                        <input type="url" id="url" name="url"  placeholder="API Endpoint" required >
+                        <input type="text" id="apikey" name="apikey" placeholder="APIKey" pattern="[A-Za-z0-9_~]{24}" required>
                     </div>
                     <div class='flex flex-cross-center flex-sb form-row'>
                         <button id="test">Test</button>
-                        <button class='button-contrast' id="save">Save</button>
+                        <button type="submit" id="save" class='button-contrast' >Save</button>
                     </div>
-                    <input type="hidden" name="type" id="type">
                 </form>
             </div>
         </section>
