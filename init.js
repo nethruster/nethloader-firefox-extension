@@ -1,4 +1,4 @@
-import { getOptions } from '/js/utils.js'
+import { getOptions, spawnNotification } from '/js/utils.js'
 
 chrome.runtime.onInstalled.addListener(() => {
   const contextMenuItem = {
@@ -7,7 +7,6 @@ chrome.runtime.onInstalled.addListener(() => {
     "contexts": ["image", "video"]
   }
   chrome.contextMenus.create(contextMenuItem)
-
 
   getOptions()
     .then(options => {
