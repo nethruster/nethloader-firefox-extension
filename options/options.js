@@ -1,5 +1,4 @@
-import { $, getTestImage } from '/js/utils.js'
-import sendImage from '/js/send-image.js'
+import { $, getTestImage, getOptions, sendImage } from '/js/utils.js'
 import Notifications from '/js/notifications.js'
 
 class Options {
@@ -16,13 +15,12 @@ class Options {
   }
 
   getStoredConfig() {
-    chrome.storage.sync.get('options', data => {
-      let { options } = data
-
-      // Set input values
-      this.urlInput.value = options.nethPublicEndpoint
-      this.apiKeyInput.value = options.nethApikey
-    })
+    getOptions()
+      .then(options => {
+        this.urlInput.value = options.nethPublicEndpoint
+        this.apiKeyInput.value = options.nethApikey
+      })
+      .catch(err => console.error(err))
   }
 
   saveStoredConfig() {
@@ -56,7 +54,7 @@ class Options {
     }
 
     let testImage = await getTestImage()
-    let url = new URL('/api', this.urlInput.value)
+    let url = new URL(this.urlInput.value)
 
     sendImage(url, this.apiKeyInput.value, testImage)
       .then(response => {

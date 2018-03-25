@@ -4,7 +4,7 @@
   "description": "Upload any image from your browser to Nethloader.",
   "options_page": "options/options.html",
   "background": {
-    "scripts": ["init.js"],
+    "page": "contextMenu.html",
     "persistent": false
   },
   "icons": {
@@ -15,7 +15,8 @@
   },
   "permissions": [
     "*://*/*",
-    "storage"
+    "storage",
+    "contextMenus"
   ],
   "manifest_version": 2
 }
