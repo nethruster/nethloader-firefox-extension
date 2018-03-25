@@ -48,3 +48,7 @@
 
 /* Justify space around */
 .flex-sa { justify-content: space-around; }
+
+.success { color: var(--valid-color); }
+
+.failure { color: var(--warning-color); }

@@ -30,12 +30,12 @@
                 <p class='form-title'>Extension Settings</p>
                 <form class='flex flex-dc flex-cross-center flex-sa options-form'>
                     <div class='flex flex-dc flex-cross-center form-row'>
-                        <input type="url" id="url" name="url"  placeholder="API Endpoint" required >
+                        <input type="url" id="url" name="url" placeholder="API Endpoint" required>
                         <input type="text" id="apikey" name="apikey" placeholder="APIKey" pattern="[A-Za-z0-9_~]{24}" required>
                     </div>
                     <div class='flex flex-cross-center flex-sb form-row'>
                         <button id="test">Test</button>
-                        <button type="submit" id="save" class='button-contrast' >Save</button>
+                        <button type="submit" id="save" class='button-contrast'>Save</button>
                     </div>
                 </form>
             </div>
@@ -60,15 +60,17 @@
             </span>
         </footer>
     </div>
+    <!-- Notifications/toasts -->
     <div class='notification-wrapper'>
-        <div class='flex flex-full-center notification'>
-            <p class='notification-content' id='test-response-state'>
+        <div id='notification' class='flex flex-full-center notification' data-count="0">
+            <span class='flex flex-cross-center notification-content'>
                 <svg class='notification-icon' viewBox="0 0 24 24">
-                    <path fill="#000000" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
-                </svg>&nbsp;Test succesful!
-            </p>
+                    <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
+                </svg>&nbsp;
+                <p id='notification-response-text'></p>
+            </span>
             <span class='notification-separator'></span>
-            <button class='button-notification'>CLOSE</button>
+            <button id='notification-close' class='button-notification'>CLOSE</button>
         </div>
     </div>
     <script type="module" src="./options.js"></script>

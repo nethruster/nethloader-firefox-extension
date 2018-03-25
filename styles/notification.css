@@ -3,19 +3,49 @@
     bottom: 0;
     right: 0;
     
-    padding: var(--base-pm);
     margin: calc(var(--base-pm) * 2);
+    overflow: hidden;
 }
 
 .notification {
+    position: relative;
     height: var(--notification-height);
     width: var(--notification-width);
 
     padding: var(--base-pm);
+    margin: calc(var(--base-pm) * 2);
 
     background-color: var(--contrast-color);
     border-radius: var(--base-br);
-    color: var(--valid-color);
+
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity .3s ease-in-out, transform .3s ease-in-out;
+}
+
+.notification.active {
+    pointer-events: initial;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.notification::before {
+    content: attr(data-count);
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: -12px;
+    right: -12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--warning-color);
+    border-radius: 100%;
+    color: white;
+    
+    opacity: .95;
 }
 
 .notification-separator {
