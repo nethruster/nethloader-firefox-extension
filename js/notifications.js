@@ -13,13 +13,9 @@ export default class Notifications {
   addNotification() {
     if (this.notificationCount === 0) {
       this.notification.classList.add(this.activeClassName)
-      this.increaseNotificationCountValue()
-      this.updateNotificationCount()
-    } else {
-      this.increaseNotificationCountValue()
-      this.updateNotificationCount()
     }
 
+    this.increaseNotificationCountValue()
     this.updateNotificationCount()
 
     if (this.timeOut) {
@@ -30,9 +26,11 @@ export default class Notifications {
 
   removeNotification() {
     this.notification.classList.remove(this.activeClassName)
+
     if (this.timeOut) {
       clearTimeout(this.timeOut)
     }
+    
     this.resetNotificationCountValue()
     this.updateNotificationCount()
 
