@@ -1,6 +1,6 @@
 {
   "name": "Send to Nethloader",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Upload any image from your browser to Nethloader.",
   "options_page": "options/options.html",
   "background": {
