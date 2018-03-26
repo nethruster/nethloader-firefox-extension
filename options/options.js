@@ -1,5 +1,5 @@
-import { $, getTestImage, getOptions, sendImage } from '/js/utils.js'
-import Notifications from '/js/notifications.js'
+import { $, getTestImage, getOptions, sendImage } from '../js/utils.js'
+import Notifications from '../js/notifications.js'
 
 class Options {
   constructor(form, urlInput, apikeyInput, testBtn, saveBtn, notificationsHandler) {

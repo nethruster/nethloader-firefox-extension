@@ -1,0 +1,22 @@
+{
+  "name": "nethloader-firefox-extension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "init.js",
+  "scripts": {
+    "build": "rollup --config"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nethruster/nethloader-firefox-extension.git"
+  },
+  "author": "Nethruster",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nethruster/nethloader-firefox-extension/issues"
+  },
+  "homepage": "https://github.com/nethruster/nethloader-firefox-extension#readme",
+  "devDependencies": {
+    "rollup": "^0.57.1"
+  }
+}

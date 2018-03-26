@@ -1,4 +1,4 @@
-import { getOptions, spawnNotification } from '/js/utils.js'
+import { getOptions, spawnNotification } from './js/utils.js'
 
 chrome.runtime.onInstalled.addListener(() => {
   const contextMenuItem = {

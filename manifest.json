@@ -2,10 +2,14 @@
   "name": "Send to Nethloader",
   "version": "0.2.0",
   "description": "Upload any image from your browser to Nethloader.",
-  "options_page": "options/options.html",
+  "applications": {
+    "gecko": {
+      "id": "sendtonethloader@nethruster.com",
+      "strict_min_version": "48.0"
+    }
+  },
   "background": {
-    "page": "contextMenu.html",
-    "persistent": false
+    "page": "contextMenu.html"
   },
   "icons": {
     "16": "/img/icons/favicon-16x16.png",

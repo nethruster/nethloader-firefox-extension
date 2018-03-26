@@ -1,4 +1,4 @@
-import { getOptions, sendImage, sendToClipBoard, spawnNotification, generateNotificationHandler } from '/js/utils.js'
+import { getOptions, sendImage, sendToClipBoard, spawnNotification, generateNotificationHandler } from './utils.js'
 
 const supportedExtensions = ["png", "jpg", "jpeg", "svg", "webp", "mp4", "ogg", "webm", "gif"]
 
