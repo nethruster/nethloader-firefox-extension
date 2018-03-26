@@ -51,29 +51,32 @@ function handleCopy(event) {
   event.preventDefault()
 }
 
-export function spawnNotification(title, body, icon, onClick, tiemout) {
-  if (!icon) {
-    icon = "/img/logo_alt_margin.png"
+export function spawnNotification(title, body, type, imageUrl, onClickHandler, tiemout) {
+  let options = {
+    type: type,
+    title: title,
+    message: body,
+    iconUrl: "/img/logo_alt_margin.png"
   }
+  if(type === 'image') { options.imageUrl = imageUrl }
 
-  var options = {
-    body: body,
-    icon: icon
-  }
-
-  let notifaction = new Notification(title, options)
-  if (onClick) {
-    notifaction.addEventListener('click', onClick)
-  }
-  if (tiemout) {
-    setTimeout(notifaction.close.bind(notifaction), tiemout)
-  }
+  chrome.notifications.create(options, notifactionId => {
+    if (onClickHandler) {
+      chrome.notifications.onClicked.addListener(onClickHandler(notifactionId))
+    }
+    if (tiemout) {
+      setTimeout(() => {chrome.notifications.clear(notifactionId)}, tiemout)
+    }
+  })
+  
 }
-export function generateNotificationHandler(url) {
-  return event => {
-    let notifaction = event.currentTarget
-    let win = window.open(url, '_blank')
-    win.focus()
-    notifaction.close()
-  }
+export function generateNotificationClickHandler(url) {
+  return (notifactionId) => (
+    firedNotifactionId => {
+      if(notifactionId !== firedNotifactionId) {return}
+      let win = window.open(url, '_blank')
+      win.focus()
+      chrome.notifications.clear(notifactionId)
+    }
+  )
 }
