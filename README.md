@@ -1,1 +1,1 @@
-# nethloader-chrome-extension
+# nethloader-firefox-extension
